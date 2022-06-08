@@ -4,12 +4,19 @@ let input = process.argv.slice(2);
 
 const timer1 = (input) => {
   for (let num of input) {
-    if (num === 0 || num < 0 || num === NaN) {
+    if (
+      num === 0 ||
+      num < 0 ||
+      num === NaN ||
+      num === undefined ||
+      typeof num !== 'number'
+    ) {
       console.log('Are you kidding me? Enter a valid number please!');
     }
-    setTimeout(() => {
-      console.log('\007');
-    }, num * 1000);
+    if (typeof num === 'number' && num > 0)
+      setTimeout(() => {
+        console.log('\007');
+      }, num * 1000);
   }
 };
 
